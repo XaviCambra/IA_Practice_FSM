@@ -6,7 +6,11 @@ public class MOUSE_Blackboard : MonoBehaviour
 {
     private GameObject[] exitPoints;
     public GameObject pooPrefab;
+    public GameObject mousePrefab;
+    public GameObject roomba;
+    public RandomLocationGenerator randomLocationGenerator;
     public float roombaDetectionRadius = 50;
+    public float timeMouse = 25;
        
     void Awake()
     {
@@ -38,6 +42,7 @@ public class MOUSE_Blackboard : MonoBehaviour
 
         return nearest;
     }
+    
 
 
 
