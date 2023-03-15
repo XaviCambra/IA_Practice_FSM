@@ -30,13 +30,21 @@ public class BT_Mouse : BehaviourTree
     
     public override void OnConstruction()
     {
-        /*DynamicSelector dyn = new DynamicSelector();
+        DynamicSelector dyn = new DynamicSelector();
 
-        dyn.AddChild(
-            new CONDITION_MOUSE_Danger("roomba","roombaDetectionRadius"),
-            
-        dyn.AddChild(this);
-        dyn.AddChild(this);*/
+        dyn.AddChild(new CONDITION_InstanceNear("roombaDetectionRadius", "roombaTag", "false", "roombaKey"),
+                    new Sequence(
+                        new ACTION_Arrive("RandomLocation"),
+                        new ACTION_Activate("pooPrefab"),
+                        new ACTION_Arrive("RandomExitPoints")
+                        ));
+        dyn.AddChild(new CONDITION_AlwaysTrue(),
+                    new Sequence(
+                        new ACTION_Arrive("RandomExitPoints"),
+                        new ACTION_Deactivate("MOUSE")
+                        )
+                    
+            ); 
 
     }
 }
