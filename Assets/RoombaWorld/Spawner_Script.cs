@@ -5,15 +5,16 @@ using UnityEngine;
 public class Spawner_Script : MonoBehaviour
 {
     // Start is called before the first frame update
-    public float timerDust = 5;
-    public float timerMouse;
+    private float timerDust;
+    private float timerMouse;
     public GameObject mousePrefab;
     public GameObject dustPrefab;
     public RandomLocationGenerator randomLocationGenerator;
     private GameObject[] exitPoints;
     void Start()
     {
-        timerMouse = 10;//Random.Range(20.0f, 30.0f);
+        timerDust = 5;
+        timerMouse = Random.Range(20.0f, 30.0f);
         exitPoints = GameObject.FindGameObjectsWithTag("EXIT");
     }
 
@@ -22,25 +23,28 @@ public class Spawner_Script : MonoBehaviour
     {
         
         timerDust -= Time.deltaTime;
-        timerMouse -= Time.deltaTime;
-
         if (timerDust <= 0) 
         {
             GameObject dustSpawn = dustPrefab;
             dustSpawn.transform.position = RandomLocationGenerator.RandomWalkableLocation();
             dustSpawn.GetComponent<SpriteRenderer>().color = Random.ColorHSV();
             Instantiate(dustSpawn);
-            timerDust = 1;
+            timerDust = 5;
         }
+
+        timerMouse -= Time.deltaTime;
         if (timerMouse <= 0)
         {
-            Instantiate(mousePrefab, RandomExitPoint().transform);
-            timerDust = 10;//Random.Range(20.0f, 30.0f);
+            GameObject l_MouseSpawn = mousePrefab;
+            l_MouseSpawn.transform.position = RandomExitPoint().transform.position;
+            Instantiate(l_MouseSpawn);
+            timerMouse = Random.Range(20.0f, 30.0f);
         }
 
     }
     public GameObject RandomExitPoint()
     {
-        return exitPoints[Random.Range(0, exitPoints.Length)];
+        int l_Index = Random.Range(0, exitPoints.Length - 1);
+        return exitPoints[l_Index];
     }
 }

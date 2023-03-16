@@ -31,7 +31,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2968775683849108526}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -95.03579, y: 143.37523, z: 0}
+  m_LocalPosition: {x: 194.73785, y: 156.70688, z: -2}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -105,7 +105,8 @@ MonoBehaviour:
   pooPrefab: {fileID: 1446901862862190, guid: 9082e5f6daa6cbd49852a647c70d3a8c, type: 3}
   roombaTag: ROOMBA
   roombaDetectionRadius: 50
-  timeMouse: 25
+  maxSpeed: 10
+  maxAcceleration: 5
 --- !u!114 &2928371407939195222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,7 +131,7 @@ MonoBehaviour:
       serializedVersion: 2
       m_Bits: 4294967295
     useGraphRaycasting: 0
-  traversableTags: -1
+  traversableTags: -3
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
     value: -1
