@@ -13,7 +13,8 @@ public class Spawner_Script : MonoBehaviour
     private GameObject[] exitPoints;
     void Start()
     {
-        timerMouse = Random.Range(20.0f, 30.0f);
+        timerMouse = 10;//Random.Range(20.0f, 30.0f);
+        exitPoints = GameObject.FindGameObjectsWithTag("EXIT");
     }
 
     // Update is called once per frame
@@ -29,12 +30,12 @@ public class Spawner_Script : MonoBehaviour
             dustSpawn.transform.position = RandomLocationGenerator.RandomWalkableLocation();
             dustSpawn.GetComponent<SpriteRenderer>().color = Random.ColorHSV();
             Instantiate(dustSpawn);
-            timerDust = 5;
+            timerDust = 1;
         }
         if (timerMouse <= 0)
         {
             Instantiate(mousePrefab, RandomExitPoint().transform);
-            timerDust = Random.Range(20.0f, 30.0f);
+            timerDust = 10;//Random.Range(20.0f, 30.0f);
         }
 
     }
