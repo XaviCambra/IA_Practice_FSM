@@ -23,12 +23,14 @@ public class Spawner_Script : MonoBehaviour
         timerDust -= Time.deltaTime;
         timerMouse -= Time.deltaTime;
 
-        /*if (timerDust <= 0) 
+        if (timerDust <= 0) 
         {
-            //Instantiate(dustPrefab, RandomLocationGenerator.RandomWalkableLocation());
-            dustPrefab.GetComponent<SpriteRenderer>().color = Random.ColorHSV();
+            GameObject dustSpawn = dustPrefab;
+            dustSpawn.transform.position = RandomLocationGenerator.RandomWalkableLocation();
+            dustSpawn.GetComponent<SpriteRenderer>().color = Random.ColorHSV();
+            Instantiate(dustSpawn);
             timerDust = 5;
-        }*/
+        }
         if (timerMouse <= 0)
         {
             Instantiate(mousePrefab, RandomExitPoint().transform);

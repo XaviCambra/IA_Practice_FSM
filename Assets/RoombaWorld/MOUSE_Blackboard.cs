@@ -2,14 +2,15 @@
 using Steerings;
 using Pathfinding;
 
-public class MOUSE_Blackboard : MonoBehaviour
+public class MOUSE_Blackboard : DynamicBlackboard
 {
     private GameObject[] exitPoints;
     public GameObject pooPrefab;
     public string roombaTag = "ROOMBA";
     public RandomLocationGenerator randomLocationGenerator;
     public float roombaDetectionRadius = 50;
-    public float timeMouse = 25;
+    public float maxSpeed = 10;
+    public float maxAcceleration = 5;
        
     void Awake()
     {

@@ -40,11 +40,12 @@ public class BT_Mouse : BehaviourTree
                         ));
         dyn.AddChild(new CONDITION_AlwaysTrue(),
                     new Sequence(
+                        new ACTION_MouseScared(),
                         new ACTION_Arrive("RandomExitPoints"),
                         new ACTION_Deactivate("MOUSE")
                         )
                     
-            ); 
+            );; 
 
     }
 }
