@@ -24,7 +24,7 @@ public class MOUSE_Blackboard : DynamicBlackboard
         return exitPoints[Random.Range(0,exitPoints.Length)];   
     }
 
-    public GameObject NearestExitPoint ()
+    public GameObject NearestExitPoint()
     {
         GameObject nearest = exitPoints[0];
         float best = SensingUtils.DistanceToTarget(gameObject, nearest);
