@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 2928371407939195222}
   - component: {fileID: 846300109005526176}
   - component: {fileID: 5559951835447124002}
-  - component: {fileID: 4794564372704894287}
   - component: {fileID: 390392210604914491}
+  - component: {fileID: 4854964916404172909}
   m_Layer: 0
   m_Name: MOUSE
   m_TagString: Untagged
@@ -31,12 +31,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2968775683849108526}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 95.737854, y: 155.70688, z: -2}
+  m_LocalPosition: {x: 260.73785, y: -105.29313, z: -2}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3154560764428928904
 SpriteRenderer:
@@ -204,21 +204,6 @@ MonoBehaviour:
   rotationalPolicy: 1
   wayPointReachedRadius: 3
   currentWaypointIndex: 0
---- !u!114 &4794564372704894287
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2968775683849108526}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 823459bfcabf59e4bbb7d30c1033e0ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fsm: {fileID: 0}
-  currentState: 
-  textMesh: {fileID: 0}
 --- !u!114 &390392210604914491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,3 +217,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+--- !u!114 &4854964916404172909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2968775683849108526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53860486cf18188428b968e8fecc55f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  behaviourTree: {fileID: 11400000, guid: 223cf2177128e1e40905d81b2c48bd58, type: 2}
+  status: LIMBO

@@ -26,7 +26,7 @@ public class Spawner_Script : MonoBehaviour
         if (timerDust <= 0) 
         {
             GameObject dustSpawn = dustPrefab;
-            dustSpawn.transform.position = RandomLocationGenerator.RandomWalkableLocation();
+            dustSpawn.transform.position = RandomLocationGenerator.RandomWalkableLocationOnScreen();
             dustSpawn.GetComponent<SpriteRenderer>().color = Random.ColorHSV();
             Instantiate(dustSpawn);
             timerDust = 5;
