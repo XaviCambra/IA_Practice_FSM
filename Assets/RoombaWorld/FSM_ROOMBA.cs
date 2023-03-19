@@ -21,7 +21,9 @@ public class FSM_ROOMBA : FiniteStateMachine
 
     public override void OnConstruction()
     {
-       
+        FiniteStateMachine ROOMBABASE = ScriptableObject.CreateInstance<ROOMBABASE>();
+        ROOMBABASE.Name = "Roomba Base";
+
         State CLEANMODE = new State("Clean mode",
             () => { },
             () => { },
@@ -41,21 +43,30 @@ public class FSM_ROOMBA : FiniteStateMachine
             () => { }  // write the on trigger code in {} if any. Remove line if no on trigger action needed
         );
 
+        Transition PooCleaned = new Transition("Poo Cleaned",
+           () => { return; }, // write the condition checkeing code in {}
+           () => { }  // write the on trigger code in {} if any. Remove line if no on trigger action needed
+       );
+
         Transition DustDetected = new Transition("Dust Detected",
             () => { return ; },
             () => { }
         );
 
-     
-        AddStates(PATROL);
+        Transition DustCleaned = new Transition("Dust Cleaned",
+            () => { return; },
+            () => { }
+        );
 
-        AddTransition(PATROL, PooDetected, CLEANMODE);
-        AddTransition(PATROL, Discharged, GOCHARGE);
-        AddTransition(CLEANMODE, Discharged, GOCHARGE);
-        AddTransition(CLEANPOO, Discharged, GOCHARGE);
-        AddTransition(GOCHARGE, Charged, PATROL);
 
-        initialState = PATROL; 
+        AddStates(CLEANMODE, CLEANPOO);
+
+        AddTransition(ROOMBABASE, PooDetected, CLEANPOO);
+        AddTransition(CLEANPOO, PooCleaned, ROOMBABASE);
+        AddTransition(CLEANMODE, DustCleaned, ROOMBABASE);
+        
+
+        initialState = ROOMBABASE; 
         
     }
 }
