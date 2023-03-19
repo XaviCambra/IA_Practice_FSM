@@ -6,14 +6,17 @@ using Steerings;
 public class ROOMBAEMERGENCY : FiniteStateMachine
 {
     private ROOMBA_Blackboard blackboard;
-
+    private GoToTarget goToTarget;
+    private GameObject chargeStation;
     /* Declare here, as attributes, all the variables that need to be shared among
      * states and transitions and/or set in OnEnter or used in OnExit 
      * For instance: steering behaviours, blackboard, ...*/
 
     public override void OnEnter()
     {
-        /* Write here the FSM initialization code. This code is execute every time the FSM is entered.
+        goToTarget = GetComponent<GoToTarget>(); 
+            
+         /* Write here the FSM initialization code. This code is execute every time the FSM is entered.
          * It's equivalent to the on enter action of any state 
          * Usually this code includes .GetComponent<...> invocations */
         base.OnEnter(); // do not remove
@@ -22,6 +25,7 @@ public class ROOMBAEMERGENCY : FiniteStateMachine
 
 public override void OnExit()
     {
+        base.DisableAllSteerings();
         /* Write here the FSM exiting code. This code is execute every time the FSM is exited.
          * It's equivalent to the on exit action of any state 
          * Usually this code turns off behaviours that shouldn't be on when one the FSM has
@@ -38,7 +42,10 @@ public override void OnExit()
 
 
         State GOCHARGE = new State("Go Charge",
-           () => { },
+           () => {
+
+               goToTarget.target = chargeStation;
+           },
            () => { },
            () => { }
        );

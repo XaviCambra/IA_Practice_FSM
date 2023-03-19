@@ -10,6 +10,7 @@ public class ROOMBA_Blackboard : MonoBehaviour {
     public float dustReachedRadius = 5; // reachability radius
     public float pooReachedRadius = 5;  // reachability radius
     public float chargingStationReachedRadius = 2;  // reachability radius
+    
 
     public float energyConsumptionPerSecond = 1;    
     public float energyRechargePerSecond = 15;

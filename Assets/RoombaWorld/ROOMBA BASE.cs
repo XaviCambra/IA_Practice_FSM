@@ -9,6 +9,9 @@ public class ROOMBABASE : FiniteStateMachine
      * states and transitions and/or set in OnEnter or used in OnExit 
      * For instance: steering behaviours, blackboard, ...*/
     private ROOMBA_Blackboard blackboard;
+    private RandomLocationGenerator locationGenerator;
+    private 
+
     public override void OnEnter()
     {
         /* Write here the FSM initialization code. This code is execute every time the FSM is entered.
@@ -30,14 +33,14 @@ public class ROOMBABASE : FiniteStateMachine
     {
      
          State PATROL = new State("Patrol",
-            () => { }, 
+            () => { got}, 
             () => { }, 
             () => { }    
         );
 
 
         State DUSTFOUND = new State("Dust found",
-           () => { blackboard.AddToMemory },
+           () => { blackboard.AddToMemory()},
            () => { },
            () => { }
        );
