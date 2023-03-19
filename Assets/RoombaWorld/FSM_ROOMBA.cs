@@ -21,12 +21,7 @@ public class FSM_ROOMBA : FiniteStateMachine
 
     public override void OnConstruction()
     {
-        State PATROL = new State("Patrol",
-            () => { }, 
-            () => { }, 
-            () => { }    
-        );
-
+       
         State CLEANMODE = new State("Clean mode",
             () => { },
             () => { },
@@ -39,11 +34,7 @@ public class FSM_ROOMBA : FiniteStateMachine
             () => { }
         );
 
-        State GOCHARGE = new State("Go Charge",
-            () => { },
-            () => { },
-            () => { }
-        );
+       
 
         Transition PooDetected = new Transition("Poo Detected",
             () => { return; }, // write the condition checkeing code in {}
@@ -55,15 +46,7 @@ public class FSM_ROOMBA : FiniteStateMachine
             () => { }
         );
 
-        Transition Discharged = new Transition("Discharged",
-            () => { return blackboard.currentCharge <= blackboard.minCharge; }
-        );
-
-        Transition Charged = new Transition("Charged",
-            () => { return; },
-            () => { }
-        );
-            
+     
         AddStates(PATROL);
 
         AddTransition(PATROL, PooDetected, CLEANMODE);
@@ -73,6 +56,6 @@ public class FSM_ROOMBA : FiniteStateMachine
         AddTransition(GOCHARGE, Charged, PATROL);
 
         initialState = PATROL; 
-
+        
     }
 }
