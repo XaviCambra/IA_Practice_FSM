@@ -23,8 +23,14 @@ public class ROOMBA_Blackboard : MonoBehaviour {
     
     public List<GameObject> memory; // list of detected dust units not picked due to presence of poo
                                     // or other events
-
-	
+    public float pointReachedRadius = 2;
+    GameObject[] patrolPoints;
+    public GameObject[] chargeStations;
+	private void Awake()
+    {
+        patrolPoints = GameObject.FindGameObjectsWithTag("PATROLPOINT");
+        chargeStations = GameObject.FindGameObjectsWithTag("ENERGY");
+    }
 	void Start () {
         memory = new List<GameObject>();
         energyLine = GameObject.Find("EnergyLine").GetComponent<TextMesh>();
@@ -76,4 +82,11 @@ public class ROOMBA_Blackboard : MonoBehaviour {
             return result;
         }
     }
+
+    public GameObject GetRandomPatrolPoint()
+    {
+        return patrolPoints[Random.Range(0, patrolPoints.Length)];
+    }
+
+    
 }
